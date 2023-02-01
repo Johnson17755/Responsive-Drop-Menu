@@ -1,0 +1,298 @@
+  /* google font import poppins */
+ @import url('https://fonts.googleapis.com/css2?family=poppins:wgh@300;400;500;600$display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ 
+ /* color */
+:root{
+    --body-color: #e4e9f7;
+    --nav-color: #4070f4;
+    --side-nav: #010718;
+    --text-color: #fff;
+    --search-bar: #f2f2f2;
+    --search-text: #010718;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --nav-color: #242526;
+    --side-nav: #242526;
+    --text-color: #ccc;
+    --search-bar: #f2f2f2;
+}
+body{
+    height: 100vh;
+    background-color: var( --body-color);
+}
+
+   /* the height of the skyblue  */
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    background-color: var(--nav-color);
+    z-index: 100;
+}
+
+nav .nav-bar{
+    position: relative;
+    height: 80%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen{
+    color: var(--text-color);
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav .nav-bar .logo a{
+    font-size: 25px;
+    font-weight: 500px;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+
+.nav-bar .nav-links{
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .nav-links li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.nav-links li a{
+    position: relative;
+    font-size: 17px;
+    font-weight: 400px;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.menu .logo-toggle{
+    display: none;
+}
+
+       /* the round circle when you hover */
+.nav-links li a::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+       /* hover botton */
+.nav-links li:hover a::before{
+    opacity: 1;
+}
+
+.nav-bar .darkLight-searchBox{  
+    display: flex;
+    justify-items: end;
+}   
+    
+   /* moving and desing the icon */
+.darkLight-searchBox .dark-light, 
+.darkLight-searchBox .searchToggle{
+    height: 30px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.dark-light i, 
+.searchToggle i{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+    /* sun switch*/
+.dark-light i.sun{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active i.sun{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active i.moon{
+    opacity: 0;
+    pointer-events: none;
+}
+
+  /* turning on and off search and cancel  */
+.searchToggle i.cancel{
+    opacity: 0;
+    pointer-events: none;
+}  
+
+.searchToggle.active i.cancel{
+    opacity: 1;
+    pointer-events: auto;
+}  
+
+.searchToggle.active i.search{
+    opacity: 0;
+    pointer-events: none;
+}  
+
+.searchBox{
+    position: relative;
+}
+
+  /* the search box move; added height*/
+.searchBox .search-field{
+    position: absolute;
+    bottom: -74px;
+    right: 10px;
+    height: 42px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background-color: var(--search-bar);
+}
+
+.searchToggle.active ~ .search-field{
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+ /* the tiny shape above the border */
+.search-field::before{
+    content: '';
+    position:absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: var(--nav-color);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+   
+   /* speaking to the text */
+.search-field input{
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+}
+
+body.dark .search-field input{
+    color: var(--text-color);
+}
+
+     /* this is for the search iteam bar */
+.search-field i{
+    position: absolute;
+    color: var(--nav-color);
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+body.dark.search-field i{
+    color: var(--text-color);
+}
+
+ /* this is for the top navigation */
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen{
+        display: block;
+    }
+
+    /* this is for the last side menu  */
+    .menu{
+        position: fixed;
+        height: 100px;
+        width: 550px;
+        left: -70%;
+        top: 0;
+        padding: 20px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu{
+        left: -0%;
+    }
+
+    nav.active .nav-bar .navLogo a{
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    /* the text in the side bar */
+    .menu .logo-toggle{
+        /* display: block; */
+        width: 100%;
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        /* the cancel sidebar */
+    .logo-toggle .siderbarClose{
+        color: var(--text-color);
+        font-size: 26px;
+        cursor: pointer;
+    }
+        /* speaking to the writing in the last menu */
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top: 30px;
+    }
+      /* this is for seperating the a in last menu */
+    .nav-links li a{
+        display: block;
+        margin-top: 20px;
+    }
+}
